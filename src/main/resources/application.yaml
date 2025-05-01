@@ -1,0 +1,41 @@
+server:
+  port: 8095
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 5s
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 4
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+    instances:
+      defaultCircuitBreaker:
+        baseConfig: default
+      userServiceCircuitBreaker:
+        baseConfig: default
+
+resilience:
+  default-circuit-breaker: defaultCircuitBreaker
+  default-fallback-uri: /fallback
+  retry:
+    attempts: 2
+    methods: [GET, POST]
+    backoff:
+      first-delay-ms: 100
+      max-delay-ms: 1000
+      factor: 2
+      jitter: true
