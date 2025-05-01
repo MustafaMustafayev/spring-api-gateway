@@ -19,7 +19,7 @@ resilience4j:
         minimumNumberOfCalls: 5
         permittedNumberOfCallsInHalfOpenState: 4
         automaticTransitionFromOpenToHalfOpenEnabled: true
-        waitDurationInOpenState: 5s
+        waitDurationInOpenState: 20s
         failureRateThreshold: 50
         eventConsumerBufferSize: 10
     instances:
@@ -39,3 +39,6 @@ resilience:
       max-delay-ms: 1000
       factor: 2
       jitter: true
+
+jwt:
+  secret: 234ewERG32_@#rgerg35t344#$EXTRASECRET987
