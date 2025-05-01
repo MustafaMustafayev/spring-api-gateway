@@ -9,6 +9,7 @@ A robust API Gateway implementation using Spring Cloud Gateway with built-in res
 - **Retry Mechanism**: Automatic retry for failed requests with configurable backoff
 - **Global Resilience**: Circuit breaker and retry patterns applied across all routes
 - **Reactive Architecture**: Built on Spring WebFlux for non-blocking I/O
+- **Authentication**: Implemented jwt authentication
 
 ## Technical Stack
 
@@ -17,6 +18,7 @@ A robust API Gateway implementation using Spring Cloud Gateway with built-in res
 - Spring Cloud Gateway 2024.0.1
 - Resilience4j for Circuit Breaker
 - Spring WebFlux
+- Jwt authentication
 
 ## Configuration
 
